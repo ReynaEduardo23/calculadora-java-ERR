@@ -1,0 +1,26 @@
+# Maven
+target/
+*.class
+*.log
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.classpath
+.project
+.settings/
+.metadata/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IntelliJ (por si alguien abre el proyecto en IDEA)
+.idea/
+*.iml
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
