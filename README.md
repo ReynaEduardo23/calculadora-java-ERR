@@ -1,4 +1,4 @@
-# calculadora-java-ERR
+## calculadora-java-ERR
 Proyecto básico para practicar operaciones matemáticas en Java
 
 
@@ -11,3 +11,10 @@ El pipeline:
 - Informa si las pruebas pasan o fallan  
 
 Puedes ver los resultados en la pestaña **"Actions"** del repositorio.
+
+## Notificaciones de fallos
+
+Este pipeline incluye una integración con Slack. Si las pruebas fallan, se envía automáticamente un mensaje al canal #devops-alertas con el estado del pipeline.
+
+La URL del webhook está protegida como secreto en GitHub.
+

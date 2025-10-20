@@ -38,3 +38,17 @@ jobs:
           java -jar junit-platform-console-standalone-1.11.2.jar \
             --class-path src/main/java:src/test/java \
             --scan-class-path
+
+      - name: Notificar en Slack si tiene éxito
+        if: success()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ ¡Éxito! Todas las pruebas de la Calculadora Java pasaron. Revisa los detalles en GitHub Actions: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Notificar en Slack si falla
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"❌ Fallo en el pipeline de la Calculadora Java. Revisa los detalles en GitHub Actions: https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"}' \
+          ${{ secrets.SLACK_WEBHOOK_URL }}
