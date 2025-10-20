@@ -17,7 +17,7 @@ public class CalculadoraTest {
 
     @Test
     public void testMultiplicar() {
-        assertEquals(16, Calculadora.multiplicar(3, 5));
+        assertEquals(15, Calculadora.multiplicar(3, 5));
     }
 
     @Test
