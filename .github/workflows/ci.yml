@@ -20,20 +20,20 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Descargar JUnit y Hamcrest
+      - name: Descargar JUnit 5 Standalone
         run: |
-          wget https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
-          wget https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+          wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.2/junit-platform-console-standalone-1.11.2.jar
 
       - name: Compilar código
         run: |
-            cd Calculadora
-            javac -cp .:junit-4.13.2.jar:hamcrest-core-1.3.jar \
+          cd Calculadora
+          javac -cp .:junit-platform-console-standalone-1.11.2.jar \
             src/main/java/com/uttec/Calculadora/Calculadora.java \
             src/test/java/com/uttec/Calculadora/CalculadoraTest.java
 
       - name: Ejecutar pruebas
         run: |
-            cd Calculadora
-            java -cp .:junit-4.13.2.jar:hamcrest-core-1.3.jar:src/main/java:src/test/java \
-            org.junit.runner.JUnitCore com.uttec.Calculadora.CalculadoraTest
+          cd Calculadora
+          java -jar junit-platform-console-standalone-1.11.2.jar \
+            --class-path src/main/java:src/test/java \
+            --scan-class-path
